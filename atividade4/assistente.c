@@ -26,7 +26,7 @@ scanf ("%d", &tipo2);
 if(tipo2 == 1){
 printf("\nsua escolha foi INTENSO. \nselecione um genero para seu filme.\n 1 para filme de TERROR PSICOLOGICO e 2 para filme de TERROR SOBRENATURAL.\n");
 scanf("%d", &tipo3);
-f (tipo3 == 1){
+if (tipo3 == 1){
                     printf("\nSua escolha foi TERROR PSICOLOGICO.\nRECOMENDACAO\nCorra!.\n");
                 } else if (tipo3 == 2){
                     printf ("\nSua escolha foi TERROR SOBRENATURAL.\nRECOMENDACAO\nInvocacao do Mal.\n");
