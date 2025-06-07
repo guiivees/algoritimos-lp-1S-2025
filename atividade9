@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 4) {
+        printf("Uso: %s <min> <max> <esperado>\n", argv[0]);
+        return 1;
+    }
+
+    int min = atoi(argv[1]);
+    int max = atoi(argv[2]);
+    int esperado = atoi(argv[3]);
+
+   
+    if (min >= max) {
+        printf("Erro: o valor mínimo deve ser menor que o valor máximo.\n");
+        return 1;
+    }
+
+    if (esperado < min || esperado > max) {
+        printf("Erro: o valor esperado deve estar entre o mínimo e o máximo (inclusive).\n");
+        return 1;
+    }
+
+    
+    srand(time(NULL));
+    int sorteado = rand() % (max - min + 1) + min;
+
+   
+    int foiSorteado = (sorteado == esperado);
+
+    
+    printf("Número sorteado: %d\n", sorteado);
+    printf("Resultado: %s\n", foiSorteado ? "sorteado" : "não sorteado");
+
+  
+    FILE *log = fopen("log.txt", "a");
+    if (log == NULL) {
+        printf("Erro ao abrir o arquivo de log.\n");
+        return 1;
+    }
+
+    fprintf(log, "número mínimo: %d\n", min);
+    fprintf(log, "número máximo: %d\n", max);
+    fprintf(log, "número esperado: %d\n", esperado);
+    fprintf(log, "número sorteado: %d\n", sorteado);
+    fprintf(log, "resultado: %s\n\n", foiSorteado ? "sorteado" : "não sorteado");
+
+    fclose(log);
+    return 0;
+}
